@@ -13,32 +13,31 @@ app.get('/test', function (req, res) {
     res.send('Hello World!');
 });
 
-app.post("/api/login", function (req, res) {
 
-    for (let i = 0; i < users.length; i++){
+app.post("/api/login", function (req, res) {
+    let hasAuthenticatedUser = false;
+
+    for (let i = 0; i < users.length; i++) {
         const userToCheck = users[i];
 
-        if (userToCheck.username === req.body.username && userToCheck.password === req.body.password){
-            res.send("Authenticated!");
+        if (userToCheck.username === req.body.username && userToCheck.password === req.body.password) {
+            // Generate a unique session token using the username and current timestamp
+            const sessionToken = `${userToCheck.username}_${Date.now()}`;
+            res.json({ token: sessionToken }); // Respond with the session token
+            hasAuthenticatedUser = true;
             break;
         }
     }
 
-
-    const username = req.body.username;
-    const password = req.body.password;
-
-    // Find user in the users array
-    const user = users.find(u => u.username === username && u.password === password);
-
-    // Check if user is found
-    if (user) {
-        res.send("Authenticated!");
-    } else {
-        res.send("Unauthenticated! Talk to Seker for help.");
+    if (!hasAuthenticatedUser) {
+        res.status(404).send(); // Respond with a 404 status code for unsuccessful login attempts
     }
 });
 
-app.listen(port, function () {
-    console.log(`Example app listening on port ${port}`);
+app.listen(port, function (err) {
+    if (err) {
+        console.error('Error starting the server:', err);
+    } else {
+        console.log(`Example app listening on port ${port}`);
+    }
 });
