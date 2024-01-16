@@ -8,11 +8,24 @@ const users = require('./database');
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
+// Redirect root path to the landing page
+app.get('/', function (req, res) {
+    res.redirect('/home');
+});
+
 // Listens to GET requests on /test
 app.get('/test', function (req, res) {
     res.send('Hello World!');
 });
 
+// Route for the landing page
+app.get('/home', function (req, res) {
+    res.sendFile(__dirname + '/public/landing.html');
+});
+// Route for the login page
+app.get('/api/login', function (req, res) {
+    res.sendFile(__dirname + '/public/login.html');
+});
 
 app.post("/api/login", function (req, res) {
     let hasAuthenticatedUser = false;
@@ -23,7 +36,10 @@ app.post("/api/login", function (req, res) {
         if (userToCheck.username === req.body.username && userToCheck.password === req.body.password) {
             // Generate a unique session token using the username and current timestamp
             const sessionToken = `${userToCheck.username}_${Date.now()}`;
-            res.json(sessionToken); // Respond with the session token
+
+            res.set('Content-Type', 'application/json');
+            res.send(`${JSON.stringify(sessionToken)}`);
+
             hasAuthenticatedUser = true;
             break;
         }
