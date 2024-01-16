@@ -23,14 +23,14 @@ app.post("/api/login", function (req, res) {
         if (userToCheck.username === req.body.username && userToCheck.password === req.body.password) {
             // Generate a unique session token using the username and current timestamp
             const sessionToken = `${userToCheck.username}_${Date.now()}`;
-            res.json({ token: sessionToken }); // Respond with the session token
+            res.json(sessionToken); // Respond with the session token
             hasAuthenticatedUser = true;
             break;
         }
     }
 
     if (!hasAuthenticatedUser) {
-        res.status(404).send(); // Respond with a 404 status code for unsuccessful login attempts
+        res.status(401).send(); // Respond with a 401 status code for unsuccessful login attempts
     }
 });
 
