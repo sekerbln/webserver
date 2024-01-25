@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="/login-page-scripts/password-toggle.js" defer></script>
+    <script src="/login-page-scripts/authentication.js" defer></script>
+
+</head>
+<body>
+    <div class="login-page">
+        <h1>Welcome to my website</h1>
+        <p>Please authenticate yourself to continue.</p>
+        <form class="login-form"> <!--action="/api/login" -->
+            <label>
+                <input type="text" id="username" name="username" placeholder="Name"><!-- placeholder=" " -->
+            </label>
+
+            <input type="password" id="password-field" name="password" placeholder="Password">
+
+
+             <button type="button" id="password-toggle" onclick="togglePassword()">Show Password</button>
+
+             <input class="button" type="submit" value="Login" onclick="authenticateUser(event)">
+        </form>
+    </div>
+</body>
+</html>
