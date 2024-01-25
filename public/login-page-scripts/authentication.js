@@ -22,10 +22,35 @@ async function authenticateUser(event) {
         document.cookie = `sessionToken=${sessionToken}`;
 
         // Additional logic or redirection after successful login
-        window.location.href = "/dashboard"; //Redirect to the dashboard
+        window.location.href = "http://localhost:3000/dashboard.html"; //Redirect to the dashboard
     } else {
-        // Handle unsuccessful login
-        console.log("Login failed. Status code:", response.status);
+        displayErrorMessage('Authentication failed. Please check your username and password.');
     }
 }
+
+function togglePassword() {
+
+}
+
+function displayErrorMessage(message) {
+
+    const errorDiv = document.createElement('div');
+    errorDiv.textContent = message;
+    errorDiv.style.color = 'white';
+    errorDiv.style.backgroundColor = 'red';
+    errorDiv.style.border = '2px solid darkred';
+    errorDiv.style.padding = '10px';
+    errorDiv.style.borderRadius = '5px';
+    errorDiv.style.marginTop = '10px';
+
+
+    const colorBlock = document.getElementById('colorBlock');
+    colorBlock.appendChild(errorDiv);
+
+
+    setTimeout(() => {
+        colorBlock.removeChild(errorDiv);
+    }, 5000);
+}
+
 

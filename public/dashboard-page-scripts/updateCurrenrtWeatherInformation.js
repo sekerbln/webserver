@@ -2,7 +2,7 @@
 
 const apiKey = '3bb49e220431cede8909572a87f514b';
 
-async function updateCurrentWeatherInformation(city) {
+async function updateCurrentWeatherInformation(city, callback) {
     // Step 1: Get coordinates of the city
     const coordinates = await getCityCoordinates(city);
 
@@ -16,10 +16,14 @@ async function updateCurrentWeatherInformation(city) {
 
             // Check if weather data is available
             if (weatherData) {
+                const weatherCondition = weatherData.weather[0].main;
                 const temperature = weatherData.main.temp;
 
-                // Display the temperature on the dashboard (you can modify this based on your dashboard structure)
+                // Display the temperature on the dashboard
                 console.log(`Currently, ${city} has a temperature of ${temperature} °C`);
+
+                // Invoke the callback function with the weather condition
+                callback(weatherCondition);
             } else {
                 console.error('Invalid weather data from OpenWeather API');
             }
@@ -30,6 +34,70 @@ async function updateCurrentWeatherInformation(city) {
         console.error('Invalid coordinates for the city');
     }
 }
+
+// Function to update weather image based on weather condition
+function updateWeatherImage(weatherCondition) {
+    // Get the container element
+    const weatherPictureContainer = document.getElementById('weather-picture-container');
+
+    // Create an image element
+    const weatherImage = document.createElement('img');
+
+    // Set the source based on the weather condition
+    switch (weatherCondition) {
+        case 'Clear':
+            weatherImage.innerHTML = <img src={'/weather-pictures/clear.jpg'}/>;
+            break;
+        case 'Clouds':
+            weatherImage.src = '/weather-pictures/clouds.jpg';
+            break;
+        case 'Rain':
+            weatherImage.src = '/weather-pictures/rain.jpg';
+            break;
+        case 'Snow':
+            weatherImage.src = '/weather-pictures/snow.jpg';
+            break;
+        case 'Thunderstorm':
+            weatherImage.src = '/weather-pictures/thunderstorm.jpg';
+            break;
+        default:
+            weatherImage.src = '/weather-pictures/default.jpg'; // Default image if condition not recognized
+    }
+
+    // Append the image to the container
+    weatherPictureContainer.innerHTML = ''; // Clear previous content
+    weatherPictureContainer.appendChild(weatherImage);
+}
+
+// updateCurrentWeatherInformation.js
+
+// ... (之前的代码)
+
+// Function to update weather picture
+function updateWeatherPicture(weatherCondition) {
+    const pictureContainer = document.getElementById('weather-picture-container');
+
+    switch (weatherCondition) {
+        case 'Clear':
+            pictureContainer.innerHTML = "<img src='/weather-pictures/Sunny.png' alt='Clear Weather'>";
+            break;
+        case 'Clouds':
+            pictureContainer.innerHTML = "<img src='/weather-pictures/Cloudy.png' alt='Cloudy Weather'>";
+            break;
+        case 'Rain':
+            pictureContainer.innerHTML = "<img src='/weather-pictures/Rainy.png' alt='Rainy Weather'>";
+            break;
+        case 'Snow':
+            pictureContainer.innerHTML = "<img src='/weather-pictures/Snowy.png' alt='Snowy Weather'>";
+            break;
+        case 'Thunderstorm':
+            pictureContainer.innerHTML = "<img src='/weather-pictures/Thunderstorm.png' alt='Thunderstorm Weather'>";
+            break;
+        default:
+            pictureContainer.innerHTML = "<p>No picture available for this weather condition</p>";
+    }
+}
+
 
 // Function to get coordinates of the city
 async function getCityCoordinates(city) {

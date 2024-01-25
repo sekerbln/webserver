@@ -3,27 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <style>
+        body {
+            text-align: left;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #2953A3;
+        }
+
+        p {
+            text-align: center;
+            max-width: 600px;
+            margin-top: 5px;
+            color: #51BDED;
+        }
+
+        #logo {
+            position: absolute;
+            top: 5%;
+            left: 50px;
+            max-width: 495px;
+            max-height: 127.64px;
+        }
+
+        #colorBlock {
+            height: 400px;
+            width: 100%;
+            background-color: #D1E9F2;
+            position: fixed; /* Change to fixed positioning */
+            top: calc(3% + 127.64px + 70px); /* Adjusted top position */
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #password-field {
+            margin-bottom: 10px;
+        }
+
+        #password-toggle {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            background-color: white;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
     <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="/login-page-scripts/password-toggle.js" defer></script>
     <script src="/login-page-scripts/authentication.js" defer></script>
 
 </head>
 <body>
-    <div class="login-page">
-        <h1>Welcome to my website</h1>
-        <p>Please authenticate yourself to continue.</p>
-        <form class="login-form"> <!--action="/api/login" -->
-            <label>
-                <input type="text" id="username" name="username" placeholder="Name"><!-- placeholder=" " -->
-            </label>
 
-            <input type="password" id="password-field" name="password" placeholder="Password">
+<div id="logo">
 
+    <img src="/landing-page-scripts/LOGO_5.png" alt="Logo">
+</div>
 
-             <button type="button" id="password-toggle" onclick="togglePassword()">Show Password</button>
+<div id="colorBlock">
+    <h1>Welcome to my website</h1>
+    <p>Please authenticate yourself to continue.</p>
+    <form class="login-form" action="/api/login">
+        <label>
+            <input type="text" id="username" name="username" placeholder="Name">
+        </label>
 
-             <input class="button" type="submit" value="Login" onclick="authenticateUser(event)">
-        </form>
-    </div>
+        <input type="password" id="password-field" name="password" placeholder="Password">
+
+        <button type="button" id="password-toggle" onclick="togglePassword()">Show Password</button>
+
+        <input class="button" type="button" value="Login" onclick="authenticateUser(event)">
+
+    </form>
+
+</div>
+
+</div>
 </body>
 </html>

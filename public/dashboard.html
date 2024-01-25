@@ -3,29 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
+    <style>
+        body {
+            text-align: left;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #2953A3;
+        }
+
+        .login-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            background-color: white;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        #weather-picture-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+    </style>
     <link rel="stylesheet" type="text/css" href="/style.css">
-    <script src="dashboard-page-scripts/updateCurrenrtWeatherInformation.js"></script>
+    <script src="dashboard-page-scripts/updateCurrentWeatherInformation.js"></script>
 </head>
 <body>
 <div class="login-page">
     <h1>Welcome to your Dashboard</h1>
     <img src="blank-profile-picture.webp" width="120" height="160"/>
-    <form action="/api/logout" method="post" class="login-form"> <!-- 注意这里的注释 -->
-        <input class="button" type="submit" value="Current Temperature" onclick="authenticateUser(event)">
-
+    <form action="/api/logout" method="post" class="login-form">
+        <input class="button" type="button" value="Get current weather" onclick="showWeather()">
         <input class="button" type="submit" value="Logout" onclick="authenticateUser(event)">
+        <div id="weather-picture-container"></div>
 
-        <button onclick="showTemperature()">Show Temperature</button>
-
-        <script src="public/dashboard-page-scripts/updateCurrentWeatherInformation.js"></script>
         <script>
-            function showTemperature() {
-                updateCurrentWeatherInformation('Berlin'); // Replace 'Berlin' with the desired city
+            function showWeather() {
+                updateCurrentWeatherInformation('Berlin', updateWeatherPicture);
+                console.log('Button Clicked');
+            }
+
+            function updateWeatherPicture(weatherCondition) {
+                const pictureContainer = document.getElementById('weather-picture-container');
+
+                switch (weatherCondition) {
+                    case 'Clear':
+                        pictureContainer.innerHTML = "<img src='/weather-pictures/Sunny.png' alt='Clear Weather'>";
+                        break;
+                    case 'Clouds':
+                        pictureContainer.innerHTML = "<img src='/weather-pictures/Cloudy.png' alt='Cloudy Weather'>";
+                        break;
+                    case 'Rain':
+                        pictureContainer.innerHTML = "<img src='/weather-pictures/Rainy.png' alt='Rainy Weather'>";
+                        break;
+                    case 'Snow':
+                        pictureContainer.innerHTML = "<img src='/weather-pictures/Snowy.png' alt='Snowy Weather'>";
+                        break;
+                    case 'Thunderstorm':
+                        pictureContainer.innerHTML = "<img src='/weather-pictures/Thunderstorm.png' alt='Thunderstorm Weather'>";
+                        break;
+                    default:
+                        pictureContainer.innerHTML = "<p>No picture available for this weather condition</p>";
+                }
             }
         </script>
-
-
-
     </form>
 </div>
 </body>
