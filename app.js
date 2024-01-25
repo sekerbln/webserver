@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require("cookie-parser");
 const app = express();
 const port = 3000;
 
@@ -22,9 +23,17 @@ app.get('/test', function (req, res) {
 app.get('/home', function (req, res) {
     res.sendFile(__dirname + '/public/landing.html');
 });
-// Route for the login page
-app.get('/api/login', function (req, res) {
-    res.sendFile(__dirname + '/public/login.html');
+
+// Route for Dashboard
+app.get('/dashboard', (req, res) => {
+    const sessionToken = req.cookies.sessionToken;
+
+    if (sessionToken) {
+    // if req.cookies.sessionToken exists then:
+    res.sendFile(__dirname + '/public/dashboard.html');
+    } else {
+        res.redirect("/api/login");
+    }
 });
 
 app.post("/api/login", function (req, res) {
@@ -37,8 +46,8 @@ app.post("/api/login", function (req, res) {
             // Generate a unique session token using the username and current timestamp
             const sessionToken = `${userToCheck.username}_${Date.now()}`;
 
-            res.set('Content-Type', 'application/json');
-            res.send(`${JSON.stringify(sessionToken)}`);
+
+            res.send(sessionToken);
 
             hasAuthenticatedUser = true;
             break;
@@ -57,3 +66,6 @@ app.listen(port, function (err) {
         console.log(`Example app listening on port ${port}`);
     }
 });
+
+updateCurrentWeatherInformation('YourCityName');
+

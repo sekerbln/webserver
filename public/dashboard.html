@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="dashboard-page-scripts/updateCurrenrtWeatherInformation.js"></script>
+</head>
+<body>
+<div class="login-page">
+    <h1>Welcome to your Dashboard</h1>
+    <img src="blank-profile-picture.webp" width="120" height="160"/>
+    <form action="/api/logout" method="post" class="login-form"> <!-- 注意这里的注释 -->
+        <input class="button" type="submit" value="Current Temperature" onclick="authenticateUser(event)">
+
+        <input class="button" type="submit" value="Logout" onclick="authenticateUser(event)">
+
+        <button onclick="showTemperature()">Show Temperature</button>
+
+        <script src="public/dashboard-page-scripts/updateCurrentWeatherInformation.js"></script>
+        <script>
+            function showTemperature() {
+                updateCurrentWeatherInformation('Berlin'); // Replace 'Berlin' with the desired city
+            }
+        </script>
+
+
+
+    </form>
+</div>
+</body>
+</html>
