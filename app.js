@@ -9,10 +9,6 @@ const port = 3000;
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-
-// Your route handling comes after setting up static file serving
-
-
 // Redirect root path to the landing page
 app.get('/', function (req, res) {
     res.redirect('/home');
@@ -57,7 +53,12 @@ app.get("/api/login", function (req, res) {
     res.send("Please use POST request for login.");
 });
 
-// ... Other routes and server setup
+app.post("/api/logout", function (req, res) {
+    // Logout logic
+    res.redirect("/"); // Redirect to Homepage after logout
+});
+
+// Start the server
 
 app.listen(port, function (err) {
     if (err) {
@@ -66,3 +67,13 @@ app.listen(port, function (err) {
         console.log(`Example app listening on port ${port}`);
     }
 });
+
+// Route for the logout
+app.get('/logout', function (req, res) {
+    // Clear the sessionToken cookie by setting its expiration date to the past
+    res.cookie('sessionToken', '', { expires: new Date(0), path: '/' });
+
+    // Redirect the user to the homepage
+    res.redirect('/');
+});
+

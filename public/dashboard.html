@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <style>
+
+
         body {
             text-align: left;
             margin: 0;
@@ -57,19 +59,36 @@
     <script src="dashboard-page-scripts/updateCurrentWeatherInformation.js"></script>
 </head>
 <body>
+
+<div id="logo">
+
+    <img src="/landing-page-scripts/LOGO_5.png" alt="Logo">
+</div>
+
 <div class="login-page">
     <h1>Welcome to your Dashboard</h1>
-    <img src="blank-profile-picture.webp" width="120" height="160"/>
-    <form action="/api/logout" method="post" class="login-form">
+    <img src="blank-profile-picture.webp" width="120" height="120"/>
+
+    <form id="dashboardForm" action="/api/logout" method="post" class="login-form">
+
         <input class="button" type="button" value="Get current weather" onclick="showWeather()">
-        <input class="button" type="submit" value="Logout" onclick="authenticateUser(event)">
+
+        <input id="logoutButton" class="button" type="button" value="Logout" onclick="logout()">
+
         <div id="weather-picture-container"></div>
 
         <script>
+
             function showWeather() {
                 updateCurrentWeatherInformation('Berlin', updateWeatherPicture);
-                console.log('Button Clicked');
+                console.log('Get current weather button clicked');
             }
+
+            function logout() {
+                // 发送注销请求
+                document.getElementById('dashboardForm').submit();
+            }
+
 
             function updateWeatherPicture(weatherCondition) {
                 const pictureContainer = document.getElementById('weather-picture-container');
