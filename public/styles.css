@@ -3,4 +3,17 @@ body {
     left: 400px;
     top: 200px;
 }
+@font-face {
+    font-family: 'PPNeueMontreal-Bold';
+    src: url('fonts/PPNeueMontreal-Bold.otf') format('opentype');
+    font-family: 'PPNeueMontreal-Regular';
+    src: url('fonts/PPNeueMontreal-Regular.otf') format('opentype');
+}
 
+body {
+    font-family: 'PPNeueMontreal-Regular', sans-serif;
+}
+
+h1 {
+    font-family: 'PPNeueMontreal-Bold', sans-serif;
+}
