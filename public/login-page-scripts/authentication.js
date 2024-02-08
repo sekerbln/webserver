@@ -5,6 +5,12 @@ async function authenticateUser(event) {
     const username = document.querySelector("#username").value;
     const password = document.querySelector("#password-field").value;
 
+    // 定义 displayErrorMessage 函数
+    function displayErrorMessage(message) {
+        // 实现错误消息显示逻辑
+        console.error(message);
+    }
+
     const response = await fetch("/api/login", {
         method: "POST",
         headers: {
@@ -13,10 +19,13 @@ async function authenticateUser(event) {
         body: "username="+username + "&password="+password
     });
 
-    // if respnse.status === 200
+    // if response.status === 200
     if (response.status === 200) {
         // The login was successful
         const sessionToken = await response.text();
+
+        // Store the username in sessionStorage
+        sessionStorage.setItem('username', username);
 
         // Store the session token in a cookie named "sessionToken"
         document.cookie = `sessionToken=${sessionToken}`;
@@ -27,30 +36,3 @@ async function authenticateUser(event) {
         displayErrorMessage('Authentication failed. Please check your username and password.');
     }
 }
-
-function togglePassword() {
-
-}
-
-function displayErrorMessage(message) {
-
-    const errorDiv = document.createElement('div');
-    errorDiv.textContent = message;
-    errorDiv.style.color = 'white';
-    errorDiv.style.backgroundColor = 'red';
-    errorDiv.style.border = '2px solid darkred';
-    errorDiv.style.padding = '10px';
-    errorDiv.style.borderRadius = '5px';
-    errorDiv.style.marginTop = '10px';
-
-
-    const colorBlock = document.getElementById('colorBlock');
-    colorBlock.appendChild(errorDiv);
-
-
-    setTimeout(() => {
-        colorBlock.removeChild(errorDiv);
-    }, 5000);
-}
-
-

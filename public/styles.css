@@ -1,6 +1,37 @@
-<style>
 body {
+    position: relative;
     left: 400px;
     top: 200px;
 }
 
+@font-face {
+    font-family: 'PPNeueMontreal-Bold';
+    src: url('fonts/PPNeueMontreal-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'PPNeueMontreal-Regular';
+    src: url('fonts/PPNeueMontreal-Regular.otf') format('opentype');
+}
+
+body {
+    font-family: 'PPNeueMontreal-Regular', sans-serif;
+}
+
+h1 {
+    font-family: 'PPNeueMontreal-Bold', sans-serif;
+}
+
+#username::placeholder,
+#password-field::placeholder {
+    color: #c0c0c0;
+    font-size: larger;
+    font-family: 'PPNeueMontreal-Regular', sans-serif;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+#loginBackground .button {
+    line-height: 40px;
+    vertical-align: middle;
+}

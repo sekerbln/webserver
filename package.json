@@ -9,6 +9,7 @@
   "author": "Seker",
   "license": "ISC",
   "dependencies": {
-    "cookie-parser": "^1.4.6"
+    "cookie-parser": "^1.4.6",
+    "express-session": "^1.18.0"
   }
 }

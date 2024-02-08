@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <style>
-
-
         body {
             text-align: left;
             margin: 0;
@@ -13,14 +11,127 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            background-image: url("dashboard-page-scripts/Background.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             height: 100vh;
         }
 
         h1 {
+            margin: 0;
             text-align: center;
-            margin-top: 10px;
+            font-family: 'PPNeueMontreal-Bold', sans-serif;
             font-weight: bold;
             color: #2953A3;
+        }
+
+        #logo {
+            max-width: 495px;
+            max-height: 127.64px;
+        }
+
+        #logoBackground {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 30px;
+            margin-top: 15px;
+            margin-left: 15px;
+            width: 250px; /* Adjust the width as needed */
+            height: 50px;
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            transform: translateY(-50%);
+        }
+
+        #logoutBackground {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 30px;
+            margin-top: 15px;
+            margin-left: 15px;
+            width: 100px; /* Adjust the width as needed */
+            height: 30px;
+            position: absolute;
+            right: 30px;
+            top: 60px;
+            transform: translateY(-50%);
+        }
+
+        #h1Background {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #FFFFFF;
+            padding: 15px;
+            border-radius: 30px;
+            margin-top: 15px;
+            margin-left: 15px;
+            width: 350px;
+            height: 40px;
+            position: absolute;
+            left: 30px;
+            top: 45%;
+            transform: translateY(-50%);
+        }
+
+        #ppBackground {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #FFFFFF;
+            padding: 0px;
+            border-radius: 35px;
+            margin-top: 0px;
+            margin-left: 0px;
+            width: 75px;
+            height: 75px;
+            position: absolute;
+            left: 440px;
+            top: 46.7%;
+            transform: translateY(-50%);
+        }
+
+
+        #getCurrBackground {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #51BDED;
+            padding: 0px;
+            border-radius: 35px;
+            margin-top: 0px;
+            margin-left: 0px;
+            width: 475px;
+            height: 75px;
+            position: absolute;
+            left: 530px;
+            top: 26.7%;
+            transform: translateY(-50%);
+        }
+
+        #getBackground {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #51BDED;
+            padding: 0px;
+            border-radius: 35px;
+            margin-top: 0px;
+            margin-left: 0px;
+            width: 475px;
+            height: 75px;
+            position: absolute;
+            left: 530px;
+            top: 46.7%;
+            transform: translateY(-50%);
         }
 
         .login-page {
@@ -30,23 +141,49 @@
             justify-content: center;
         }
 
-        .login-form {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .button {
+        #logoutButton {
             display: inline-block;
             text-decoration: none;
-            background-color: white;
-            color: #333;
+            background-color: transparent;
             padding: 10px 20px;
             border-radius: 5px;
+            font-family: 'PPNeueMontreal-Bold', sans-serif;
             font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 10px;
+            color: #51BDED;
+            font-size: 30px;
+            border: none;
+            text-align: center;
+            line-height: 10px;
+        }
+
+        .getButton {
+            display: inline-block;
+            text-decoration: none;
+            background-color: transparent;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-family: 'PPNeueMontreal-Bold', sans-serif;
+            font-weight: bold;
+            color: #FFFFFF;
+            font-size: 30px;
+            border: none;
+            text-align: center;
+            line-height: 10px;
+        }
+
+        #getCurrBackground button {
+            display: inline-block;
+            text-decoration: none;
+            background-color: transparent;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-family: 'PPNeueMontreal-Bold', sans-serif;
+            font-weight: bold;
+            color: #FFFFFF;
+            font-size: 30px;
+            border: none;
+            text-align: center;
+            line-height: 10px;
         }
 
         #weather-picture-container img {
@@ -54,31 +191,122 @@
             height: auto;
         }
 
+        #temperature-container {
+            text-align: center;
+            max-width: 600px;
+            margin-top: 5px;
+            color: #51BDED;
+            margin-left: 40px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        #whiteBlock {
+            height: 100px;
+            width: 450px;
+            background-color: #FFFFFF;
+            padding: 20px;
+            position: absolute;
+            left: 0px;
+            bottom: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: left;
+            text-align: left;
+        }
+
+        #colorBlock {
+            height: 100px;
+            width: 100%;
+            background-color: #FFFFFF;
+            padding: 20px;
+            position: absolute;
+            left: 530px;
+            bottom: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: left;
+            text-align: left;
+        }
+
+
+
     </style>
     <link rel="stylesheet" type="text/css" href="/style.css">
-    <script src="dashboard-page-scripts/updateCurrentWeatherInformation.js"></script>
+    <script src="/dashboard-page-scripts/updateUserData.js" defer></script>
+    <script src="/dashboard-page-scripts/updateCurrenrtWeatherInformation.js"></script>
 </head>
 <body>
+<div id="getCurrBackground">
 
-<div id="logo">
-
-    <img src="/landing-page-scripts/LOGO_5.png" alt="Logo">
+    <div id="temperature-container">
+        <button onclick="displayTemperature()">Show Temperature</button>
+    </div>
 </div>
 
-<div class="login-page">
-    <h1>Welcome to your Dashboard</h1>
-    <img src="blank-profile-picture.webp" width="120" height="120"/>
+<div id="weather-picture-container"></div>
+
+<div id="whiteBlock"></div>
+
+<div id="logoBackground">
+    <div id="logo">
+        <img src="/landing-page-scripts/LOGO.png" alt="Logo">
+    </div>
+</div>
+
+<div id="h1Background">
+    <h1 id="dashboardHeading"></h1>
+</div>
+
+<div id="logoutBackground">
 
     <form id="dashboardForm" action="/api/logout" method="post" class="login-form">
-
-        <input class="button" type="button" value="Get current weather" onclick="showWeather()">
-
         <input id="logoutButton" class="button" type="button" value="Logout" onclick="logout()">
+</div>
 
+<div id="ppBackground">
+    <img src="/dashboard-page-scripts/pp.png" width="55px" height="55px"/>
+</div>
+
+<script>
+    document.getElementById('temperatureButton').addEventListener('click', getTemperature);
+
+    // 获取天气温度的函数
+    async function getTemperature() {
+        try {
+            // 替换为你想要获取天气的城市
+            const city = 'Berlin';
+
+            // 调用获取天气信息的函数
+            const temperature = await updateCurrentWeatherInformation(city);
+
+            // 显示结果在页面上，你可以根据需要修改这一部分
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = `Currently, ${city} has a temperature of ${temperature} °C`;
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+</script>
+
+<div id="getTemBackground">
+    <button class="button" onclick="displayTemperature()">
+    <h1 id="temperatureResult"></h1>
+</div>
+
+<div id="colorBlock">
+    <div id="temperature-container">
+    <!-- 这里将显示温度的内容 -->
+    </div>
+</div>
+
+<div id="getBackground">
+    <form id="dashboardForm" action="/api/logout" method="post" class="login-form">
+        <input class="getButton" type="button" value="Get current weather" onclick="showWeather()">
         <div id="weather-picture-container"></div>
-
         <script>
-
             function showWeather() {
                 updateCurrentWeatherInformation('Berlin', updateWeatherPicture);
                 console.log('Get current weather button clicked');
@@ -89,10 +317,8 @@
                 document.getElementById('dashboardForm').submit();
             }
 
-
             function updateWeatherPicture(weatherCondition) {
                 const pictureContainer = document.getElementById('weather-picture-container');
-
                 switch (weatherCondition) {
                     case 'Clear':
                         pictureContainer.innerHTML = "<img src='/weather-pictures/Sunny.png' alt='Clear Weather'>";
@@ -114,7 +340,9 @@
                 }
             }
         </script>
-    </form>
 </div>
+
+
+
 </body>
 </html>

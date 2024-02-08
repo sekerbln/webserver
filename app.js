@@ -35,8 +35,11 @@ app.post("/api/login", function (req, res) {
         if (userToCheck.username === req.body.username && userToCheck.password === req.body.password) {
             // Perform actions after successful login, such as generating a sessionToken
             const sessionToken = `${userToCheck.username}_${Date.now()}`;
-            res.send(sessionToken);
 
+            // Set a cookie named "username" with the value of the logged-in user's username
+            res.cookie('username', userToCheck.username);
+
+            res.send(sessionToken);
             hasAuthenticatedUser = true;
             break;
         }
@@ -69,11 +72,11 @@ app.listen(port, function (err) {
 });
 
 // Route for the logout
-app.get('/logout', function (req, res) {
-    // Clear the sessionToken cookie by setting its expiration date to the past
-    res.cookie('sessionToken', '', { expires: new Date(0), path: '/' });
+app.post("/api/logout", function (req, res) {
+    // 清除会话存储中的用户名
+    sessionStorage.removeItem('username');
 
-    // Redirect the user to the homepage
-    res.redirect('/');
+    // 其他注销逻辑
+    res.redirect("/"); // 重定向到首页
 });
 

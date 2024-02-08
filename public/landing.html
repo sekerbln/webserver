@@ -2,76 +2,164 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SekerHub</title>
+    <title>My weather website</title>
     <style>
         body {
             text-align: left;
-            margin: 0; /* Remove default margin */
+            margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh; /* Make the body take the full height of the viewport */
+            justify-content: space-between;
+            min-height: 100vh;
+            height: 100vh;
+            background-image: url("landing-page-scripts/background.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
         }
 
         h1 {
+            margin: 0;
             text-align: center;
-            margin-top: 10px; /* Adjusted top margin */
-            font-weight: bold; /* Set font weight to bold */
-            color: #2953A3; /* Set text color to #2953A3 */
+            font-family: 'PPNeueMontreal-Bold', sans-serif;
+            font-weight: bold;
+            color: #2953A3;
         }
 
         p {
-            text-align: left; /* Align the text inside the paragraph to the left */
-            max-width: 600px; /* Set a maximum width for the paragraph */
-            margin-top: 5px; /* Adjusted top margin */
-            color: #51BDED; /* Set text color to #51BDED */
+            text-align: left;
+            font-family: 'PPNeueMontreal-Regular', sans-serif;
+            max-width: 600px;
+            margin-top: 5px;
+            color: #51BDED;
+            margin-left: 40px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .second-paragraph {
+            text-align: left;
+            font-family: 'PPNeueMontreal-Regular', sans-serif;
+            max-width: 600px;
+            margin-top: 5px;
+            color: #2d2d2d;
+            margin-left: 240px;
+            margin-bottom: 10px;
         }
 
         #logo {
-            position: absolute;
-            top: 5%;
-            left: 50px;
             max-width: 495px;
             max-height: 127.64px;
         }
 
-        #colorBlock {
-            height: 400px;
-            width: 100%;
-            background-color: #D1E9F2;
-            position: fixed; /* Change to fixed positioning */
-            top: calc(3% + 127.64px + 70px); /* Adjusted top position */
-            left: 0;
+        #logoBackground {
             display: flex;
-            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 30px;
+            margin-top: 15px;
+            margin-left: 15px;
+            width: 250px;
+            height: 50px;
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            transform: translateY(-50%);
+        }
+
+        #h1Background {
+            display: flex;
             align-items: center;
             justify-content: center;
+            background-color: #FFFFFF;
+            padding: 15px;
+            border-radius: 30px;
+            margin-top: 15px;
+            margin-left: 15px;
+            width: 500px;
+            height: 40px;
+            position: absolute;
+            left: 30px;
+            top: 45%;
+            transform: translateY(-50%);
         }
+
+        #loginBackground {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #51BDED;
+            padding: 15px;
+            border-radius: 30px;
+            margin-top: 15px;
+            margin-left: 15px;
+            width: 100px;
+            height: 40px;
+            position: absolute;
+            left: 580px;
+            top: 45%;
+            transform: translateY(-50%);
+        }
+
+        #colorBlock {
+            height: 100px;
+            width: 100%;
+            background-color: #FFFFFF;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: left;
+            text-align: left;
+
+        }
+
 
         #loginButton {
             display: inline-block;
             text-decoration: none;
-            background-color: white;
-            color: #333;
+            background-color: transparent;
             padding: 10px 20px;
             border-radius: 5px;
+            font-family: 'PPNeueMontreal-Bold', sans-serif;
             font-weight: bold;
+            color: #FFFFFF;
+            font-size: 30px;
         }
 
     </style>
 </head>
 <body>
-<div id="logo">
-
-    <img src="/landing-page-scripts/LOGO_5.png" alt="Logo">
+<div id="logoBackground">
+    <div id="logo">
+        <img src="/landing-page-scripts/LOGO.png" alt="Logo">
+    </div>
 </div>
 
-<div id="colorBlock">
-    <h1>Welcome to this weather website</h1>
-    <p>This website is a university project for the course "Programming." It is a simple weather website that uses the OpenWeather API to display the weather for a given city. Please authenticate yourself to continue.</p>
+<div id="h1Background">
+    <h1>Welcome to your weather website</h1>
+</div>
+
+<div id="loginBackground">
 
     <a id="loginButton" href="/login-page-scripts/login.html">Login</a>
 </div>
+
+<div id="colorBlock">
+    <p >This website is a university project for the course "Programming." It is a simple weather website that uses the OpenWeather API to display the weather for a given city. Please authenticate yourself to continue.</p>
+    <p class="second-paragraph" > ©2024 Dongjie Ma.
+        <br>Background picture taken in Sharm El Sheikh by Dongjie Ma.</p>
+
+</div>
+
+
+
 </body>
 </html>

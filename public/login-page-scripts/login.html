@@ -10,13 +10,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            background-image: url("Background.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             height: 100vh;
         }
 
         h1 {
+            margin: 0;
             text-align: center;
-            margin-top: 10px;
+            font-family: 'PPNeueMontreal-Bold', sans-serif;
             font-weight: bold;
             color: #2953A3;
         }
@@ -26,35 +31,151 @@
             max-width: 600px;
             margin-top: 5px;
             color: #51BDED;
+            margin-left: 40px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        #username {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+            color: #c0c0c0;
+            font-size: larger;
+            font-family: 'PPNeueMontreal-Regular', sans-serif;
+        }
+
+        #password-field {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+            color: #c0c0c0;
+            font-size: larger;
+            font-family: 'PPNeueMontreal-Regular', sans-serif;
+            line-height: 40px
+        }
+
+
+        .login-form label {
+            font-size: 2em;
+            font-weight: bold;
+            font-family: 'PPNeueMontreal-Bold', sans-serif;
+            color: darkgray;
+            line-height: 40px
         }
 
         #logo {
-            position: absolute;
-            top: 5%;
-            left: 50px;
             max-width: 495px;
             max-height: 127.64px;
         }
 
-        #colorBlock {
-            height: 400px;
-            width: 100%;
-            background-color: #D1E9F2;
-            position: fixed; /* Change to fixed positioning */
-            top: calc(3% + 127.64px + 70px); /* Adjusted top position */
-            left: 0;
+        #logoBackground {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 30px;
+            margin-top: 15px;
+            margin-left: 15px;
+            width: 250px;
+            height: 50px;
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            transform: translateY(-50%);
         }
 
-        .login-page {
+        #h1Background {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
+            background-color: #FFFFFF;
+            padding: 15px;
+            border-radius: 30px;
+            margin-top: 15px;
+            margin-left: 15px;
+            width: 500px;
+            height: 40px;
+            position: absolute;
+            left: 30px;
+            top: 45%;
+            transform: translateY(-50%);
         }
+
+        #usernameBackground {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #FFFFFF;
+            padding: 15px;
+            border-radius: 30px;
+            margin-top: 15px;
+            margin-left: 15px;
+            width: 300px;
+            height: 40px;
+            position: absolute;
+            left: 590px;
+            top: 35%;
+            transform: translateY(-50%);
+        }
+
+        #passwordBackground {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #FFFFFF;
+            padding: 15px;
+            border-radius: 30px;
+            margin-top: 15px;
+            margin-left: 15px;
+            width: 300px;
+            height: 40px;
+            position: absolute;
+            left: 590px;
+            top: 45%;
+            transform: translateY(-50%);
+            line-height: 40px
+        }
+
+
+
+        #colorBlock {
+            height: 100px;
+            width: 100%;
+            background-color: #FFFFFF;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: left;
+            text-align: left;
+        }
+
+        #loginBackground {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #51BDED;
+            padding: 15px;
+            border-radius: 30px;
+            margin-top: 15px;
+            margin-left: 15px;
+            width: 110px;
+            height: 40px;
+            position: absolute;
+            left: 780px;
+            top: 55%;
+            transform: translateY(-50%);
+        }
+
 
         .login-form {
             margin-top: 20px;
@@ -65,6 +186,15 @@
 
         label {
             margin-bottom: 10px;
+            display: inline-block;
+            text-decoration: none;
+            background-color: transparent;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-family: 'PPNeueMontreal-Bold', sans-serif;
+            font-weight: bold;
+            color: #000000;
+            font-size: 30px;
         }
 
         input {
@@ -79,11 +209,20 @@
         }
 
         #password-toggle {
+            margin-left: -250px;
+            margin-top: 440px;
+            top: 57%;
             margin-bottom: 10px;
             cursor: pointer;
+            background-color: white;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 18px;
+            border: 2px solid white;
         }
 
-        .button {
+        .button1 {
             display: inline-block;
             text-decoration: none;
             background-color: white;
@@ -93,6 +232,31 @@
             font-weight: bold;
             cursor: pointer;
         }
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            background-color: transparent;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-family: 'PPNeueMontreal-Bold', sans-serif;
+            font-weight: bold;
+            color: #FFFFFF;
+            font-size: 30px;
+            border: none;
+            text-align: center;
+            line-height: 10px;
+        }
+
+        #password-toggle:hover {
+            background-color: #DDD;
+        }
+
+        #password-toggle:focus {
+            outline: none;
+            box-shadow: 0 0 5px #2953A3;
+        }
+
     </style>
     <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="/login-page-scripts/password-toggle.js" defer></script>
@@ -101,29 +265,54 @@
 </head>
 <body>
 
-<div id="logo">
-
-    <img src="/landing-page-scripts/LOGO_5.png" alt="Logo">
+<div id="logoBackground">
+    <div id="logo">
+        <img src="/landing-page-scripts/LOGO.png" alt="Logo">
+    </div>
 </div>
 
-<div id="colorBlock">
-    <h1>Welcome to my website</h1>
-    <p>Please authenticate yourself to continue.</p>
+<div id="h1Background">
+    <h1>Welcome to your weather website</h1>
+</div>
+
+<div id="usernameBackground">
     <form class="login-form" action="/api/login">
         <label>
             <input type="text" id="username" name="username" placeholder="Name">
         </label>
+    </form>
+</div>
 
-        <input type="password" id="password-field" name="password" placeholder="Password">
+<div id="passwordBackground">
+    <form class="login-form" action="/api/login">
+        <label>
+            <input type="password" id="password-field" name="password" placeholder="Password">
+        </label>
+    </form>
+</div>
 
-        <button type="button" id="password-toggle" onclick="togglePassword()">Show Password</button>
+<div id="loginBox">
+    <form class="login-form" action="/api/login">
+        <label>
+            <button type="Button" id="password-toggle" onclick="togglePassword()">Show Password</button>
+        </label>
+    </form>
+</div>
 
-        <input class="button" type="button" value="Login" onclick="authenticateUser(event)">
+<div id="loginBackground">
+    <form class="login-form" action="/api/login">
+        <label>
+            <input class="button" type="button" value="Login" onclick="authenticateUser(event)">
+        </label>
+    </form>
+</div>
+
+<div id="colorBlock">
+
+    <p>Please authenticate yourself to continue.</p>
+
 
     </form>
 
 </div>
 
-</div>
-</body>
-</html>
